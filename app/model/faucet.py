@@ -66,11 +66,14 @@ def get_testnet_coins(receiver_str, asset_str):
         "content-type": "application/json",
         "accept": "application/json"
     }
+    proxies = {
+        "http": None,
+        "https": None
+    }
 
     # build transaction
     transaction_json = json.dumps(transaction_dict)
-    print("transaction_json:", transaction_json)
-    response = requests.post(build_url, data=transaction_json)
+    response = requests.post(build_url, data=transaction_json, headers=headers, proxies=proxies)
     if response.content:
         response = response.json()
     else:
@@ -80,15 +83,13 @@ def get_testnet_coins(receiver_str, asset_str):
             "result": False
             }
 
-    print("response:", response)
-
     # sign transaction
     built_transaction_dict = {
         "password": password,
         "transaction": response['data']
     }
     built_transaction_json = json.dumps(built_transaction_dict)
-    response = requests.post(sign_url, data=built_transaction_json)
+    response = requests.post(sign_url, data=built_transaction_json, headers=headers, proxies=proxies)
     if response.content:
         response = response.json()
     else:
@@ -103,7 +104,7 @@ def get_testnet_coins(receiver_str, asset_str):
         "raw_transaction": response['data']['transaction']['raw_transaction']
     }
     signed_transaction_json = json.dumps(signed_transaction_dict)
-    response = requests.post(submit_url, headers=headers, data=signed_transaction_json)
+    response = requests.post(submit_url, headers=headers, data=signed_transaction_json, proxies=proxies)
     if response.content:
         response = response.json()
     else:
@@ -118,8 +119,3 @@ def get_testnet_coins(receiver_str, asset_str):
         "message": "get test coin successfully.",
         "result": True
     }
-
-receiver = "sm1qwrcll07ney9zutvng2w3gw8y7jmsyhfkx7vhv7"
-asset = "btm"
-r = get_testnet_coins(receiver, asset)
-print("txID:", r)
