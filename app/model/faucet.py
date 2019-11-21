@@ -8,9 +8,9 @@ def get_testnet_coins(receiver_str, asset_str):
         "eth": "bbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
     }
 
-    account_id = "0KN9JNBA00A02"
+    account_id = "10CJPO1HG0A02"
     password = "12345"
-    fee = 10**6    # transaction fee is 0.01 BTM
+    fee = 10**7    # transaction fee is 0.01 BTM
     amount = 10**9 # user can get 10 BTM or other asset test coin
 
     build_url = "http://127.0.0.1:9888/build-transaction"
@@ -26,7 +26,7 @@ def get_testnet_coins(receiver_str, asset_str):
     else:
         return {
             "tx_id": "",
-            "message": "asset is invalid",
+            "message": "failed to get test coin, asset is invalid",
             "result": False
             }
 
@@ -67,14 +67,19 @@ def get_testnet_coins(receiver_str, asset_str):
         "content-type": "application/json",
         "accept": "application/json"
     }
+
+    print("transaction_json:", transaction_json)
     
     # build transaction
     response = requests.post(build_url, data=transaction_json).json()
+    print("response:", response)
     built_transaction_dict = {
         "password": password,
         "transaction": response['data']
     }
     built_transaction_json = json.dumps(built_transaction_dict)
+
+    print("built_transaction_json:", built_transaction_json)
 
     # sign transaction
     response = requests.post(sign_url, headers=headers, data=built_transaction_json).json()
@@ -91,3 +96,8 @@ def get_testnet_coins(receiver_str, asset_str):
         "message": "get test coin successfully.",
         "result": True
     }
+
+receiver_str = "sm1qwrcll07ney9zutvng2w3gw8y7jmsyhfkx7vhv7"
+asset_str = "btm"
+r = get_testnet_coins(receiver_str, asset_str)
+print("txID:", r['tx_id'])

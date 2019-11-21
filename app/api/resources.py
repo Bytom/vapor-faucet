@@ -2,6 +2,7 @@ from flask_restful import inputs
 from flask_restful import Resource
 from flask_restful import reqparse
 
+from app.model.key import create_entropy
 from app.model.faucet import get_testnet_coins
 
 parser = reqparse.RequestParser()
