@@ -1,10 +1,5 @@
 import random
 
-from app.model.signature import *
-from app.model.edwards25519 import *
-from app.model.utils import *
-from app.model import receiver
-
 # create_key create 128 bits entropy
 def create_entropy():
     entropy = random.randint(0, 2**128)
