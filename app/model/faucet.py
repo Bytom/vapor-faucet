@@ -13,6 +13,10 @@ def get_testnet_coins(receiver_str, asset_str):
     fee = 1000000           # transaction fee is 0.01 BTM
     amount = 10 * 100000000 # user can get 10 BTM or other asset test coin
 
+    build_url = "http://127.0.0.1:9888/build-transaction"
+    sign_url = "http://127.0.0.1:9888/sign-transaction"
+    submit_url = "http://127.0.0.1:9888/submit-transaction"
+
     if asset_str == "btm":
         asset_id = asset_dict['btm']
     elif asset_str == "btc":
@@ -65,7 +69,6 @@ def get_testnet_coins(receiver_str, asset_str):
     }
     
     # build transaction
-    build_url = "http://127.0.0.1:9888/build-transaction"
     response = requests.post(build_url, data=transaction_json).json()
     built_transaction_dict = {
         "password": password,
@@ -74,7 +77,6 @@ def get_testnet_coins(receiver_str, asset_str):
     built_transaction_json = json.dumps(built_transaction_dict)
 
     # sign transaction
-    sign_url = "http://127.0.0.1:9888/sign-transaction"
     response = requests.post(sign_url, headers=headers, data=built_transaction_json).json()
     signed_transaction_dict = {
         "raw_transaction": response['data']['transaction']['raw_transaction']
@@ -82,7 +84,6 @@ def get_testnet_coins(receiver_str, asset_str):
     signed_transaction_json = json.dumps(signed_transaction_dict)
 
     # submit transaction
-    submit_url = "http://127.0.0.1:9888/submit-transaction"
     response = requests.post(submit_url, headers=headers, data=signed_transaction_json).json()
     
     return {
