@@ -1,5 +1,4 @@
 Bytom Kit
-==========
 
 - [1 Motivation](#1-motivation)
 - [2 Usage](#2-usage)
