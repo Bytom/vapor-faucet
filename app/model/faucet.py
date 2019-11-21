@@ -62,34 +62,56 @@ def get_testnet_coins(receiver_str, asset_str):
                 "type": "control_address"
             })
     
-    transaction_json = json.dumps(transaction_dict)
     headers = {
         "content-type": "application/json",
         "accept": "application/json"
     }
 
-    print("transaction_json:", transaction_json)
-    
     # build transaction
-    response = requests.post(build_url, data=transaction_json).json()
+    transaction_json = json.dumps(transaction_dict)
+    print("transaction_json:", transaction_json)
+    response = requests.post(build_url, data=transaction_json)
+    if response.content:
+        response = response.json()
+    else:
+        return {
+            "tx_id": "",
+            "message": "failed to get test coin, build transaction failed.",
+            "result": False
+            }
+
     print("response:", response)
+
+    # sign transaction
     built_transaction_dict = {
         "password": password,
         "transaction": response['data']
     }
     built_transaction_json = json.dumps(built_transaction_dict)
+    response = requests.post(sign_url, data=built_transaction_json)
+    if response.content:
+        response = response.json()
+    else:
+        return {
+            "tx_id": "",
+            "message": "failed to get test coin, sign transaction failed.",
+            "result": False
+            }
 
-    print("built_transaction_json:", built_transaction_json)
-
-    # sign transaction
-    response = requests.post(sign_url, headers=headers, data=built_transaction_json).json()
+    # submit transaction
     signed_transaction_dict = {
         "raw_transaction": response['data']['transaction']['raw_transaction']
     }
     signed_transaction_json = json.dumps(signed_transaction_dict)
-
-    # submit transaction
-    response = requests.post(submit_url, headers=headers, data=signed_transaction_json).json()
+    response = requests.post(submit_url, headers=headers, data=signed_transaction_json)
+    if response.content:
+        response = response.json()
+    else:
+        return {
+            "tx_id": "",
+            "message": "failed to get test coin, submit transaction failed.",
+            "result": False
+            }
     
     return {
         "tx_id": response['data']['tx_id'],
@@ -97,7 +119,7 @@ def get_testnet_coins(receiver_str, asset_str):
         "result": True
     }
 
-receiver_str = "sm1qwrcll07ney9zutvng2w3gw8y7jmsyhfkx7vhv7"
-asset_str = "btm"
-r = get_testnet_coins(receiver_str, asset_str)
-print("txID:", r['tx_id'])
+receiver = "sm1qwrcll07ney9zutvng2w3gw8y7jmsyhfkx7vhv7"
+asset = "btm"
+r = get_testnet_coins(receiver, asset)
+print("txID:", r)
