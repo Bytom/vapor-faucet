@@ -10,8 +10,8 @@ def get_testnet_coins(receiver_str, asset_str):
 
     account_id = "0KN9JNBA00A02"
     password = "12345"
-    fee = 1000000           # transaction fee is 0.01 BTM
-    amount = 10 * 100000000 # user can get 10 BTM or other asset test coin
+    fee = 10**6    # transaction fee is 0.01 BTM
+    amount = 10**9 # user can get 10 BTM or other asset test coin
 
     build_url = "http://127.0.0.1:9888/build-transaction"
     sign_url = "http://127.0.0.1:9888/sign-transaction"

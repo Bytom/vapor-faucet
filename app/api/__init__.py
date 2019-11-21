@@ -1,7 +1,6 @@
 from flask import Blueprint
 from flask_restful import Api
 
-from app.api.resources import Hello
 from app.api.resources import Create_Entropy
 from app.api.resources import Get_Testnet_Coins
 

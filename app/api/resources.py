@@ -6,7 +6,7 @@ from app.model.faucet import get_testnet_coins
 
 parser = reqparse.RequestParser()
 parser.add_argument('receiver_str', type=str)
-
+parser.add_argument('asset_str', type=str)
 
 class Create_Entropy(Resource):
 
@@ -19,5 +19,6 @@ class Get_Testnet_Coins(Resource):
     def post(self):
         args = parser.parse_args()
         receiver = args.get('receiver_str')
-        tx_id = get_testnet_coins(receiver)
+        asset = args.get('asset_str')
+        tx_id = get_testnet_coins(receiver, asset)
         return tx_id
