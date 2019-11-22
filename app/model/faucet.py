@@ -3,9 +3,10 @@ import json
 
 def get_testnet_coins(receiver_str, asset_str):
     asset_dict = {
-        "btm": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-        "btc": "aaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-        "eth": "bbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "btm":  "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "btc":  "aaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "eth":  "bbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "usdt": "ccffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
     }
 
     account_id = "10CJPO1HG0A02"
