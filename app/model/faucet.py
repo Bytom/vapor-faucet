@@ -1,22 +1,25 @@
 import requests
 import json
 
-def get_testnet_coins(receiver_str, asset_str):
+def get_testnet_coins(address_str, asset_str):
+    print("address:", address_str)
+    print("asset:  ", asset_str)
+
     asset_dict = {
         "btm":  "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-        "btc":  "aaffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "btc":  "d50a426bdaaf1458d161aba4d8c3ebdd095eac7e1bbeb4a0252a3737ccf2d492",
         "eth":  "bbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
         "usdt": "ccffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
     }
 
-    account_id = "10CJPO1HG0A02"
-    password = "12345"
+    account_id = "94e33787-d27a-47cb-a74f-8e59c6e1c68d"
+    password = "123456"
     fee = 10**7    # transaction fee is 0.01 BTM
     amount = 10**9 # user can get 10 BTM or other asset test coin
 
-    build_url = "http://127.0.0.1:9888/build-transaction"
-    sign_url = "http://127.0.0.1:9888/sign-transaction"
-    submit_url = "http://127.0.0.1:9888/submit-transaction"
+    build_url = "http://127.0.0.1:9889/build-transaction"
+    sign_url = "http://127.0.0.1:9889/sign-transaction"
+    submit_url = "http://127.0.0.1:9889/submit-transaction"
 
     if asset_str == "btm":
         asset_id = asset_dict['btm']
@@ -59,7 +62,7 @@ def get_testnet_coins(receiver_str, asset_str):
     transaction_dict['actions'].append({
                 "amount": amount,
                 "asset_id": asset_id,
-                "address": receiver_str,
+                "address": address_str,
                 "type": "control_address"
             })
     
