@@ -19,7 +19,7 @@ class Get_Testnet_Coins(Resource):
 
     def post(self):
         args = parser.parse_args()
-        receiver = args.get('address')
+        address = args.get('address')
         asset = args.get('asset')
-        tx_id = get_testnet_coins(receiver, asset)
+        tx_id = get_testnet_coins(address, asset)
         return tx_id

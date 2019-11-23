@@ -8,8 +8,8 @@ def get_testnet_coins(address_str, asset_str):
     asset_dict = {
         "btm":  "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
         "btc":  "d50a426bdaaf1458d161aba4d8c3ebdd095eac7e1bbeb4a0252a3737ccf2d492",
-        "eth":  "bbffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
-        "usdt": "ccffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+        "eth":  "a0889e1080999e59ed552865a1d3ee677202796222141ccc3552041708aad76c",
+        "usdt": "4483893ef7d9aac788c0e9e49a12398c1d35a2172adb1c8dc551fd169a6f5703",
     }
 
     account_id = "94e33787-d27a-47cb-a74f-8e59c6e1c68d"
