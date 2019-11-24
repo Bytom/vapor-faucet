@@ -13,6 +13,7 @@ def get_testnet_coins(address_str, asset_str):
     }
 
     account_id = "a6015f95-11f6-4183-8570-84c3c7b85e98"
+    account_id = "f47da555-0897-476b-8b99-197eb3fe4b39"
     # account_id = "94e33787-d27a-47cb-a74f-8e59c6e1c68d"
     password = "123456"
     fee = 10**7    # transaction fee is 0.01 BTM
@@ -61,7 +62,7 @@ def get_testnet_coins(address_str, asset_str):
                 "use_unconfirmed": True
             })
 
-     # action for receive asset
+    # action for receive asset
     transaction_dict['actions'].append({
                 "amount": amount,
                 "asset_id": asset_id,
