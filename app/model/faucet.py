@@ -27,6 +27,8 @@ def get_testnet_coins(address_str, asset_str):
         asset_id = asset_dict['btc']
     elif asset_str == "eth":
         asset_id = asset_dict['eth']
+    elif asset_str == "usdt":
+        asset_id = asset_dict['usdt']
     else:
         return {
             "tx_id": "",
