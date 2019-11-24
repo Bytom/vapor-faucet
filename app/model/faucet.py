@@ -13,6 +13,7 @@ def get_testnet_coins(address_str, asset_str):
     }
 
     account_id = "a6015f95-11f6-4183-8570-84c3c7b85e98"
+    # account_id = "94e33787-d27a-47cb-a74f-8e59c6e1c68d"
     password = "123456"
     fee = 10**7    # transaction fee is 0.01 BTM
     amount = 10**9 # user can get 10 BTM or other asset test coin
@@ -82,6 +83,7 @@ def get_testnet_coins(address_str, asset_str):
     response = requests.post(build_url, data=transaction_json, headers=headers, proxies=proxies)
     if response.content:
         response = response.json()
+        print("build transaction completely.")
     else:
         return {
             "tx_id": "",
@@ -98,6 +100,7 @@ def get_testnet_coins(address_str, asset_str):
     response = requests.post(sign_url, data=built_transaction_json, headers=headers, proxies=proxies)
     if response.content:
         response = response.json()
+        print("sign transaction completely.")
     else:
         return {
             "tx_id": "",
@@ -113,6 +116,7 @@ def get_testnet_coins(address_str, asset_str):
     response = requests.post(submit_url, headers=headers, data=signed_transaction_json, proxies=proxies)
     if response.content:
         response = response.json()
+        print("submit transaction completely.")
     else:
         return {
             "tx_id": "",
