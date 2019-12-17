@@ -15,7 +15,11 @@ def get_testnet_coins(address_str, asset_str):
     account_id = "757c076e-b349-48ee-ba36-60ed7eac640b"
     password = "123456"
     fee = 10**7    # transaction fee is 0.01 BTM
-    amount = 10**9 # user can get 10 BTM or other asset test coin
+    btm_amount = 10**9 # user can get 10 btm or other asset test coin
+    btc_amount = 10**7 # user can get 0.1 btc or other asset test coin
+    eth_amount = 10**8 # user can get 1 eth or other asset test coin
+    usdt_amount = 10**9 # user can get 10 usdt or other asset test coin
+    amount = 0
 
     build_url = "http://127.0.0.1:9889/build-transaction"
     sign_url = "http://127.0.0.1:9889/sign-transaction"
@@ -23,12 +27,16 @@ def get_testnet_coins(address_str, asset_str):
 
     if asset_str == "btm":
         asset_id = asset_dict['btm']
+        amount = btm_amount
     elif asset_str == "btc":
         asset_id = asset_dict['btc']
+        amount = btc_amount
     elif asset_str == "eth":
         asset_id = asset_dict['eth']
+        amount = eth_amount
     elif asset_str == "usdt":
         asset_id = asset_dict['usdt']
+        amount = usdt_amount
     else:
         return {
             "tx_id": "",
