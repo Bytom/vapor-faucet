@@ -12,7 +12,7 @@ def get_testnet_coins(address_str, asset_str):
         "usdt": "4483893ef7d9aac788c0e9e49a12398c1d35a2172adb1c8dc551fd169a6f5703",
     }
 
-    account_id = "757c076e-b349-48ee-ba36-60ed7eac640b"
+    account_id = "98239d36-7ac8-4cc0-9dc2-efc4e58fbed6"
     password = "123456"
     fee = 10**7    # transaction fee is 0.01 BTM
     btm_amount = 10**9 # user can get 10 btm or other asset test coin
