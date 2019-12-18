@@ -18,7 +18,7 @@ def get_testnet_coins(address_str, asset_str):
     btm_amount = 10**9 # user can get 10 btm or other asset test coin
     btc_amount = 10**7 # user can get 0.1 btc or other asset test coin
     eth_amount = 10**8 # user can get 1 eth or other asset test coin
-    usdt_amount = 10**9 # user can get 10 usdt or other asset test coin
+    usdt_amount = 10**10 # user can get 10 usdt or other asset test coin
     amount = 0
 
     build_url = "http://127.0.0.1:9889/build-transaction"
