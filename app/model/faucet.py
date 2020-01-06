@@ -15,10 +15,10 @@ def get_testnet_coins(address_str, asset_str):
     account_id = "831c5efb-1018-4477-bfb1-5c694d086a76"
     password = "123456"
     fee = 10**7    # transaction fee is 0.01 BTM
-    btm_amount = 200*10**8 # user can get 200 btm or other asset test coin
-    btc_amount = 0.01*10**8 # user can get 0.01 btc or other asset test coin
-    eth_amount = 0.5*10**8 # user can get 0.5 eth or other asset test coin
-    usdt_amount = 100*10**8 # user can get 100 usdt or other asset test coin
+    btm_amount = 2*10**10 # user can get 200 btm or other asset test coin
+    btc_amount = 10**6 # user can get 0.01 btc or other asset test coin
+    eth_amount = 5*10**7 # user can get 0.5 eth or other asset test coin
+    usdt_amount = 10**10 # user can get 100 usdt or other asset test coin
     amount = 0
 
     build_url = "http://127.0.0.1:9889/build-transaction"
