@@ -9,10 +9,10 @@ def get_testnet_coins(address_str, asset_str):
         "btm":  "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
         "btc":  "d50a426bdaaf1458d161aba4d8c3ebdd095eac7e1bbeb4a0252a3737ccf2d492",
         "eth":  "a0889e1080999e59ed552865a1d3ee677202796222141ccc3552041708aad76c",
-        "usdt": "4483893ef7d9aac788c0e9e49a12398c1d35a2172adb1c8dc551fd169a6f5703",
+        "usdt": "9090fa534ec05423663be7c78e9571d7a04d6d5f567ce2df71eee838f944ff61",
     }
 
-    account_id = "831c5efb-1018-4477-bfb1-5c694d086a76"
+    account_id = "a38cb4e8-57ac-4a1a-a4d1-7111c9771507"
     password = "123456"
     fee = 10**7    # transaction fee is 0.01 BTM
     btm_amount = 2*10**10 # user can get 200 btm or other asset test coin
