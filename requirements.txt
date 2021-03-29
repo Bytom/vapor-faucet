@@ -47,7 +47,7 @@ pybitcoin==0.9.9
 pybtm==0.1.2
 pycparser==2.19
 pycryptodome==3.7.3
-Pygments==2.3.1
+Pygments==2.7.4
 pykeccak==0.2.1
 pylint==2.2.2
 pysha3==1.0.2
